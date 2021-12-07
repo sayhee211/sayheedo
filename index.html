@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang = "ko">
+	
+	<head>
+		<meta charset="utf-8">
+		<title> Canvas 01 </title>
+		<style >
+			body{ margin: 250px; background: white; }
+			#myCanvas{ background: #E3C422; border: white 1px solid; }	
+		
+		</style>
+
+		</head>
+
+	
+	<body>
+		<canvas id="myCanvas" width="800" height="600">
+			캔버스를 지원하지 않습니다.
+			
+		</canvas>
+
+		<script>
+			var canvas =document.getElementById("myCanvas")
+			var ctx = canvas.getContext("2d");
+
+
+var cnt=0;
+
+
+			var ctxW = canvas.width;
+			var ctxH = canvas.height;
+            ctx.lineWidth = 1;
+			ctx.translate(ctxW/2,ctxH/2);
+			var num1 =Math.floor(Math.random()*400 -6000);
+			var num2 =Math.floor(Math.random()*4000 -100);
+			var num3 =Math.floor(Math.random()*1000);
+			
+
+
+			var num4 =Math.floor(Math.random()*400 -200);
+			var num5 =Math.floor(Math.random()*200 -100);
+			var num6 =Math.floor(Math.random()*50);
+				
+				
+
+
+				function animate() {
+				cnt++;
+				ctx.arc(num1, num2, num3, 20, Math.PI*1);
+				ctx.arc(num4, num5, num6, 20, Math.PI*11);
+
+				ctx.stroke();
+				ctx.moveTo(num1,num2);
+				ctx.rotate(500*Math.PI / 380);
+				//ctx.clearRect(0, 0, ctxW, ctxH); //1
+				//ctx.fillStyle ="red";
+				//ctx.fillRect(x, 10, 50, 50);
+				ctx.rotate(10); //2(이거없으면 가로로만 쭉간다)
+				if (cnt > 10){
+					clearInterval(animateInterval);
+				}
+				}
+				//x++; //3
+			
+				var animateInterval =setInterval(animate, 100);
+
+ctx.canvas.addEventListener("click", function(event) {  
+    clearInterval(animateInterval);
+});
+			
+		</script>
+
+<h2> 작품명 : 콩나물 행진 </h2>
+<h3> 박세희 / 송현도 팀 </h3>
+<h4> 머리를 맞대어 행진하는 콩나물들을 반복되는 모습으로 표현했다. 라인으로 만들어진
+콩나물들이 왜 모이게 되었는지, 보는 사람들로 하여금 궁금증을 자아낸다. 
+
+
+
+	</body>
+
+</html>
